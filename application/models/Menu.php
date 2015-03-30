@@ -17,30 +17,79 @@ class Menu extends CI_Model {
         parent::__construct();
         $this->xml = simplexml_load_file(DATAPATH . 'menu.xml');
 
-        // build the list of patties - approach 1
-        foreach ($this->xml->patties->patty as $patty) {
-            $patty_names[(string) $patty['code']] = (string) $patty;
-        }
-
         // build a full list of patties - approach 2
-        foreach ($this->$xml->patties->patty as $patty) {
+        foreach ($this->$xml->patties->patty as $patty)
+		{
             $record = new stdClass();
             $record->code = (string) $patty['code'];
             $record->name = (string) $patty;
             $record->price = (float) $patty['price'];
             $patties[$record->code] = $record;
         }
-    }
-
-    // retrieve a list of patties, to populate a dropdown, for instance
-    function patties() {
-        return $this->patty_names;
+		
+		//build a list of cheeses
+        foreach ($this->$xml->cheeses->cheese as $cheese)
+		{
+            $record = new stdClass();
+            $record->code = (string) $cheese['code'];
+            $record->name = (string) $cheese;
+            $record->price = (float) $cheese['price'];
+            $cheeses[$record->code] = $record;
+        }
+		
+		//build a list of toppings
+		foreach ($this->$xml->toppings->topping as $topping)
+		{
+            $record = new stdClass();
+            $record->code = (string) $topping['code'];
+            $record->name = (string) $topping;
+            $record->price = (float) $topping['price'];
+            $toppings[$record->code] = $record;
+        }
+		
+		//build a list of sauces
+		foreach ($this->$xml->sauces->sauce as $sauce)
+		{
+            $record = new stdClass();
+            $record->code = (string) $sauce['code'];
+            $record->name = (string) $sauce;
+            $record->price = (float) $sauce['price'];
+            $sauces[$record->code] = $record;
+        }
     }
 
     // retrieve a patty record, perhaps for pricing
-    function getPatty($code) {
+    function getPatty($code)
+	{
         if (isset($this->patties[$code]))
             return $this->patties[$code];
+        else
+            return null;
+    }
+	
+	// retrieve a cheese record, perhaps for pricing
+    function getCheese($code)
+	{
+        if (isset($this->cheeses[$code]))
+            return $this->cheeses[$code];
+        else
+            return null;
+    }
+	
+	// retrieve a topping record, perhaps for pricing
+    function getTopping($code)
+	{
+        if (isset($this->toppings[$code]))
+            return $this->toppings[$code];
+        else
+            return null;
+    }
+
+	// retrieve a sauce record, perhaps for pricing
+    function getSauce($code)
+	{
+        if (isset($this->sauces[$code]))
+            return $this->sauces[$code];
         else
             return null;
     }
