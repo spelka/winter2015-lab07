@@ -1,4 +1,4 @@
-<h4>{filename} for {customer}</h4>
+<h4>{file} for {customer}</h4>
 <h4>Special Request: {special}</h4>
 <br>
 

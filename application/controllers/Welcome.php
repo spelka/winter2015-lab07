@@ -62,6 +62,8 @@ class Welcome extends Application
       $this->data['special'] = $order->getSpecial();
       $this->data['order_total'] = $order->getOrderTotal();
 
+      $this->data['file'] = substr($filename, 0, -4);
+
       $num_burgers = 0;
       $order_total = 0.0;
       $all_orders = array();
