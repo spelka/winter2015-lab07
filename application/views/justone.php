@@ -1,4 +1,5 @@
-<h1>{filename} for {customer} {special}</h1>
+<h4>{filename} for {customer}</h4>
+<h4>Special Request: {special}</h4>
 <br>
 
 {order}
@@ -9,7 +10,8 @@
 <p>Toppings: {toppings}</p>
 <p>Sauces: {sauces}</p>
 <p>Burger Total: {total} </p>
+<br>
 {/order}
 
 <br>
-<h1>ORDER TOTAL: {order_total}</h1>
+<h4>ORDER TOTAL: {order_total}</h4>

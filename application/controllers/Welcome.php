@@ -60,6 +60,7 @@ class Welcome extends Application
       $this->data['filename'] = $filename;
       $this->data['customer'] = $order->getCustomer();
       $this->data['special'] = $order->getSpecial();
+      $this->data['order_total'] = $order->getOrderTotal();
 
       $num_burgers = 0;
       $order_total = 0.0;
@@ -112,7 +113,7 @@ class Welcome extends Application
         //push to orderArray
         array_push($all_orders, $burgerData);
 
-        var_dump($all_orders);
+        //var_dump($all_orders);
       }
 
       // Present the list to choose from

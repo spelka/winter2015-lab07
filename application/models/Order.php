@@ -73,7 +73,7 @@ class Order extends CI_Model
 			if ($this->menu->getCheese($new_burger->cheeseBottom) != NULL)
 			{
 				//update the price
-				$bottomCheesePrice = $menu->getCheese($new_burger->CheeseBottom)->price;
+				$bottomCheesePrice = $this->menu->getCheese($new_burger->CheeseBottom)->price;
 				if($bottomCheesePrice != NULL)
 				{
 					$total += $bottomCheesePrice;
@@ -136,5 +136,10 @@ class Order extends CI_Model
     function getSpecial()
     {
         return $this->special;
+    }
+
+    function getOrderTotal()
+    {
+        return $this->order_total;
     }
 }
