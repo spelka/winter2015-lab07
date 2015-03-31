@@ -1,3 +1,3 @@
 {orders}
-	<p><a href='/welcome/order/{file}'>{file}</a></p>
+	<p><a href='/welcome/order/{filename}'>{file}</a></p>
 {/orders}
